@@ -1,10 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class UI_TitleScene : UI_BaseScene
 {
+    private CancellationTokenSource cts = null;
+
     [SerializeField] private TextMeshProUGUI blinkText;
 
     private bool textEffectLock = false;
@@ -23,16 +26,10 @@ public class UI_TitleScene : UI_BaseScene
 
     private void OnDisable()
     {
-        if (coBlinkEffectToText != null)
-            StopCoroutine(coBlinkEffectToText);
-    }
-
-    public override bool Init()
-    {
-        if (base.Init() == false)
-            return false;
-
-        return true;
+        if(cts != null)
+        {
+            cts.Dispose();
+        }
     }
 
     #region OnClickEvent
