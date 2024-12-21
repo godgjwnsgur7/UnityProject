@@ -1,16 +1,22 @@
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
-public class BaseObject : MonoBehaviour
+public enum EObjectType
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    Test,
+}
+
+public class BaseObject : InitBase
+{
+    public EObjectType ObjectType { get; protected set; }
+
+    public override bool Init()
     {
-        
+        if (base.Init() == false)
+            return false;
+
+        return true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public virtual void SetInfo(int objectId) { }
 }
