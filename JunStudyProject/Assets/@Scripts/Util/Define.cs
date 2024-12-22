@@ -27,6 +27,9 @@ public static class Define
         Water = 4,
         UI = 5,
 
+        Player = 6,
+        Npc = 7,
+        Monster = 8,
     }
 
     /// <summary>
