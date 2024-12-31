@@ -7,7 +7,6 @@ public enum EObjectType
     Player,
     Monster,
     Npc,
-
 }
 
 [RequireComponent(typeof(SpriteRenderer))]
