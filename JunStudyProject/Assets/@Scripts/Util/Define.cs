@@ -30,6 +30,7 @@ public static class Define
         Player = 6,
         Npc = 7,
         Monster = 8,
+        Ground = 9,
     }
 
     /// <summary>
@@ -48,4 +49,18 @@ public static class Define
         
     }
 
+    public enum EPlayerInputSchemeType
+    {
+        KeyboardMouse,
+        GamePad,
+        Touch,
+        Joystick,
+        XR,
+    }
+
+    public enum EPlayerInputMapType
+    {
+        Player,
+        UI,
+    }
 }

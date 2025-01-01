@@ -14,7 +14,7 @@ public class Managers : MonoBehaviour
 
     #region Core
     private DataManager _data = new DataManager();
-    private InputManager _input = null; // Init()¿¡¼­ »ı¼º
+    private InputManager _input = null; // Init()ì—ì„œ ìƒì„±
     private ResourceManager _resource = new ResourceManager();
     private SceneManagerEx _scene = new SceneManagerEx();
     private UIManager _ui = new UIManager();
@@ -41,21 +41,23 @@ public class Managers : MonoBehaviour
 
             DontDestroyOnLoad(go);
 
-            // ÃÊ±âÈ­
+            // ì´ˆê¸°í™”
             s_instance = go.GetComponent<Managers>();
 
             s_instance._data.Init();
+            /*
             GameObject inputObj = new GameObject { name = "Input" };
             inputObj.transform.parent = go.transform;
             s_instance._input = inputObj.AddComponent<InputManager>();
             s_instance._input.Init();
             s_instance._ui.Init();
+            */
         }
     }
 
 
     /// <summary>
-    /// ¾À ÀÌµ¿ ½Ã È£Ãâ
+    /// ì”¬ ì´ë™ ì‹œ í˜¸ì¶œ
     /// </summary>
     public static void Clear()
     {
