@@ -1,28 +1,43 @@
+using System.Threading;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovementComponent : PlayerChildComponent
 {
-    [SerializeField, ReadOnly] Rigidbody2D rigid;
+    [SerializeField, ReadOnly] PlayerGroundCheckComponent groundCheckComponent;
+    [SerializeField, ReadOnly] Rigidbody2D rigidBody;
+
+    [SerializeField, ReadOnly] Vector2 MoveVec = Vector2.zero;
+
+    [SerializeField] float moveSpeed = 5.0f;
 
     protected override void Reset()
     {
         base.Reset();
 
-        rigid = GetComponent<Rigidbody2D>();
+        groundCheckComponent = GetComponent<PlayerGroundCheckComponent>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     protected override void ConnectEvent(bool isConnect)
     {
         controller.OnMove -= OnMove;
+        controller.OnMoveX -= OnMoveX;
 
-        if(isConnect)
+        if (isConnect)
         {
             controller.OnMove += OnMove;
+            controller.OnMoveX += OnMoveX;
         }
     }
 
     private void OnMove(Vector2 moveVec)
     {
-        // 이동이동
+        rigidBody.linearVelocity = moveVec;
+    }
+
+    private void OnMoveX(float moveX)
+    {
+        rigidBody.linearVelocityX = moveX * moveSpeed;
     }
 }

@@ -1,6 +1,9 @@
 
 using UnityEngine;
 
+/// <summary>
+/// 스테이트 이름과 같아야 함
+/// </summary>
 public enum EPlayerState
 {
     Idle,
@@ -11,9 +14,14 @@ public enum EPlayerState
     Climb,
     Dead,
 
-    // Bow - 공격타입 하나임 활쏘는거
+    // Weapon에 따른 모션
+    // Bow - 공격 1
     // Spear - 공격 1,2 / 던지기
     // Sword - 공격 1,2,3
+    ThrowAttack,
+    Attack1,
+    Attack2,
+    Attack3,
 }
 
 public static class AnimatorHelper
@@ -42,15 +50,73 @@ public static class AnimatorHelper
     {
         return stateInfo.normalizedTime >= 1.0f;
     }
+
+    public static void InitializePlayer(this Animator ownerAnimator)
+    {
+        var controller = ownerAnimator.GetComponent<PlayerController>();
+        if (controller == null)
+        {
+            Debug.LogError("Contoller is Null!!");
+            return;
+        }
+
+        var states = ownerAnimator.GetBehaviours<PlayerControllerState>();
+        foreach (var state in states)
+            state.InitializePlayer(controller);
+    }
 }
 
 public class PlayerControllerState : StateMachineBehaviour
 {
-    // 모든 플레이어 State가 가지고 있는 무언가.
-    // controller를 바꿔끼는 것에 대해서는 좀 에반거 같기도 하고... 괜찮은 거 같기도 하고...?
-    // 뭔가 좀 애매한 느낌이긴해 공격 외에 동작은 똑같을거거든.
+    protected PlayerController controller = null;
 
-    // 똑같은 동작에 대해서는 그냥 같게 해도 될 것 같은 느낌이긴 함.
+    public void InitializePlayer(PlayerController controller)
+    {
+        this.controller = controller;
+    }
 
-    
+    protected virtual bool IsEndState(AnimatorStateInfo stateInfo)
+    {
+        return stateInfo.normalizedTime >= 0.99f;
+    }
+
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    {
+        base.OnStateEnter(animator, animatorStateInfo, layerIndex);
+    }
+
+    public sealed override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    {
+        base.OnStateUpdate(animator, animatorStateInfo, layerIndex);
+        CheckNextState(animator, animatorStateInfo);
+    }
+
+    public override void OnStateExit(UnityEngine.Animator animator, UnityEngine.AnimatorStateInfo animatorStateInfo, int layerIndex)
+    {
+        base.OnStateExit(animator, animatorStateInfo, layerIndex);
+    }
+
+    public sealed override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+    {
+        base.OnStateMachineEnter(animator, stateMachinePathHash);
+    }
+
+    public sealed override void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+    {
+        base.OnStateMachineExit(animator, stateMachinePathHash);
+    }
+
+    protected virtual void CheckNextState(Animator animator, AnimatorStateInfo animatorStateInfo)
+    {
+        
+        // Move
+        if(controller.CheckMove())
+        {
+            animator.Play(EPlayerState.Move);
+        }
+        else if(animatorStateInfo.IsState(EPlayerState.Idle) == false)
+        {
+            animator.Play(EPlayerState.Idle);
+        }
+    }
 }

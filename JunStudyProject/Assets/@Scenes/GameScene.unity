@@ -711,9 +711,9 @@ GameObject:
   - component: {fileID: 500680828}
   - component: {fileID: 500680830}
   - component: {fileID: 500680829}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerFoot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -951,6 +951,7 @@ GameObject:
   - component: {fileID: 634023857}
   - component: {fileID: 634023856}
   - component: {fileID: 634023858}
+  - component: {fileID: 634023859}
   m_Layer: 9
   m_Name: TileMapCollider
   m_TagString: Untagged
@@ -1459,6 +1460,33 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!50 &634023859
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634023854}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &658824063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1686,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964996695}
   m_Enabled: 1
-  m_CellSize: {x: 2.5, y: 2.5, z: 0}
+  m_CellSize: {x: 2.56, y: 2.56, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -4477,7 +4505,7 @@ Animator:
   m_GameObject: {fileID: 1802422016}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 75378af505bf96f428e53045689a1563, type: 2}
+  m_Controller: {fileID: 9100000, guid: b1eb9b9cf04ef764baedb01c72757a46, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4503,8 +4531,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_AngularDamping: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4588,6 +4616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca97e7313662df48ab6b97df442f328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1802422019}
   <IsControllableState>k__BackingField: 0
 --- !u!114 &1802422024
 MonoBehaviour:
@@ -4761,7 +4790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1802422023}
-  playerinput: {fileID: 1802422025}
+  playerInput: {fileID: 1802422025}
 --- !u!114 &1802422027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4801,7 +4830,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1802422023}
-  rigid: {fileID: 1802422020}
+  groundCheckComponent: {fileID: 1802422024}
+  rigidBody: {fileID: 1802422020}
+  MoveVec: {x: 0, y: 0}
+  moveSpeed: 5
 --- !u!1 &1837653053
 GameObject:
   m_ObjectHideFlags: 0

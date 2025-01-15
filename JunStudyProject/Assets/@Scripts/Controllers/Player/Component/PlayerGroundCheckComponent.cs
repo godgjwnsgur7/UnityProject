@@ -5,6 +5,8 @@ public class PlayerGroundCheckComponent : PlayerChildComponent
     [SerializeField, ReadOnly] TriggerNotifyObject groundCheckNotify;
     [SerializeField, ReadOnly] int groundCount = 0;
 
+    public float VelocityY { get; private set; }
+
     protected override void Reset()
     {
         base.Reset();
