@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: {fileID: 1377747162}
+  btn: {fileID: 491360222}
 --- !u!1 &240666940
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,19 +862,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 491360223}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 88394965}
-        m_TargetAssemblyTypeName: UI_TestScene, Assembly-CSharp
-        m_MethodName: OnClickTest1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &491360223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,19 +983,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 750517590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 88394965}
-        m_TargetAssemblyTypeName: UI_TestScene, Assembly-CSharp
-        m_MethodName: OnClickTest4
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &750517590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,19 +1104,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1083748262}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 88394965}
-        m_TargetAssemblyTypeName: UI_TestScene, Assembly-CSharp
-        m_MethodName: OnClickTest3
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1083748262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,19 +1550,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2113563844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 88394965}
-        m_TargetAssemblyTypeName: UI_TestScene, Assembly-CSharp
-        m_MethodName: OnClickTest2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2113563844
 MonoBehaviour:
   m_ObjectHideFlags: 0
