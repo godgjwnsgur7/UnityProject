@@ -1,46 +1,20 @@
-using Cysharp.Threading.Tasks;
 using System;
+using System.Collections;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_TestScene : MonoBehaviour
 {
     [SerializeField] TestScene scene;
+    [SerializeField] Button testBtn;
 
-    [SerializeField] Button btn;
+    Subject<int> test;
 
-    public event Func<bool, bool> IsTestCheck;
-
-    private void Awake()
+    private void Start()
     {
-        btn.OnClickAsObservable().Subscribe(_ => OnClickTest1());
-    }
-
-    public void OnClickTest1()
-    {
-        bool b = IsTestCheck.Invoke(true);
-
-        Debug.LogWarning(b);
-    }
-
-    public void OnClickTest2()
-    {
-        bool b = IsTestCheck.Invoke(false);
-
-        Debug.LogWarning(b);
-    }
-
-    public void OnClickTest3()
-    {
+        scene = FindFirstObjectByType<TestScene>();
 
     }
-
-    public void OnClickTest4()
-    {
-
-    }
-
-    private bool TestTrue() => true;
-    private bool TestFalse() => false;
 }

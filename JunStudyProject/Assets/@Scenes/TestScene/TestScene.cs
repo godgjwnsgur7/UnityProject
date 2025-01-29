@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using UniRx;
 using UnityEngine;
 
 public class TestScene : MonoBehaviour
@@ -6,23 +9,30 @@ public class TestScene : MonoBehaviour
 
     private void Start()
     {
-        ui.IsTestCheck += Test1;
-        ui.IsTestCheck += Test2;
-        ui.IsTestCheck += Test3;
+        ui = FindFirstObjectByType<UI_TestScene>();
+
+        // StartCoroutine(Test1());
+        StartCoroutine(Test2());
+
     }
 
-    public bool Test1(bool b)
+    public IEnumerator Test1()
     {
-        return true;
-    }
+        var stream1 = Observable.Interval(TimeSpan.FromSeconds(1));
+        stream1.Subscribe(x => Debug.Log($"1 : {Time.time.ToString()}"));
+        yield return new WaitForSeconds(0.1f);
+        stream1.Subscribe(x => Debug.Log($"2 : {Time.time.ToString()}"));
+        yield return new WaitForSeconds(0.1f);
+        stream1.Subscribe(x => Debug.Log($"3 : {Time.time.ToString()}"));
+    } 
 
-    public bool Test2(bool b)
+    public IEnumerator Test2()
     {
-        return false;
-    }
-
-    public bool Test3(bool b)
-    {
-        return true;
+        var stream2 = Observable.Interval(TimeSpan.FromSeconds(1)).Publish().RefCount();
+        stream2.Subscribe(x => Debug.Log($"1 : {Time.time.ToString()}"));
+        yield return new WaitForSeconds(0.1f);
+        stream2.Subscribe(x => Debug.Log($"2 : {Time.time.ToString()}"));
+        yield return new WaitForSeconds(0.1f);
+        stream2.Subscribe(x => Debug.Log($"3 : {Time.time.ToString()}"));
     }
 }
