@@ -27,7 +27,7 @@ public class SceneManagerEx
     {
         if(cts != null)
         {
-            Debug.LogError("Áßº¹ ¾À ·Îµù ¿äÃ»");
+            Debug.LogError("ì¤‘ë³µ ì”¬ ë¡œë”© ìš”ì²­");
             return;
         }
 
